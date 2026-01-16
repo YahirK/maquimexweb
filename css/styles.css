@@ -12,7 +12,7 @@
     --color-accent-hover: #e09000;
     --color-secondary: #6b8299;
     --color-secondary-light: #8ba3b9;
-    
+
     --color-white: #ffffff;
     --color-gray-100: #f8f9fa;
     --color-gray-200: #e9ecef;
@@ -23,16 +23,16 @@
     --color-gray-700: #495057;
     --color-gray-800: #343a40;
     --color-gray-900: #212529;
-    
+
     --color-whatsapp: #25D366;
     --color-whatsapp-hover: #1da851;
-    
+
     --color-success: #28a745;
     --color-error: #dc3545;
-    
+
     /* Typography */
     --font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    
+
     --font-size-xs: 0.75rem;
     --font-size-sm: 0.875rem;
     --font-size-base: 1rem;
@@ -43,17 +43,17 @@
     --font-size-4xl: 2.25rem;
     --font-size-5xl: 3rem;
     --font-size-6xl: 3.75rem;
-    
+
     --font-weight-normal: 400;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
     --font-weight-extrabold: 800;
-    
+
     --line-height-tight: 1.25;
     --line-height-normal: 1.5;
     --line-height-relaxed: 1.75;
-    
+
     /* Spacing */
     --space-1: 0.25rem;
     --space-2: 0.5rem;
@@ -67,7 +67,7 @@
     --space-16: 4rem;
     --space-20: 5rem;
     --space-24: 6rem;
-    
+
     /* Borders */
     --radius-sm: 0.25rem;
     --radius-md: 0.5rem;
@@ -75,26 +75,26 @@
     --radius-xl: 1rem;
     --radius-2xl: 1.5rem;
     --radius-full: 9999px;
-    
+
     /* Shadows */
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
     --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    
+
     /* Transitions */
     --transition-fast: 150ms ease;
     --transition-normal: 300ms ease;
     --transition-slow: 500ms ease;
-    
+
     /* Z-index */
     --z-dropdown: 100;
     --z-sticky: 200;
     --z-fixed: 300;
     --z-modal: 400;
     --z-tooltip: 500;
-    
+
     /* Container */
     --container-max: 1200px;
     --container-padding: var(--space-4);
@@ -111,6 +111,8 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+    /* Fix for sticky header obscuring content */
     -webkit-text-size-adjust: 100%;
 }
 
@@ -175,7 +177,8 @@ button {
 }
 
 .section-title {
-    font-size: var(--font-size-4xl);
+    font-size: var(--font-size-3xl);
+    /* Smaller size for mobile */
     font-weight: var(--font-weight-bold);
     color: var(--color-primary);
     margin-bottom: var(--space-4);
@@ -313,8 +316,11 @@ button {
     top: 100%;
     left: 0;
     right: 0;
-    background-color: var(--color-primary);
+    background-color: var(--color-primary-dark);
+    /* Solid background for legibility */
     padding: var(--space-4);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav__list.active {
@@ -389,7 +395,8 @@ button {
 }
 
 .hero__title {
-    font-size: var(--font-size-4xl);
+    font-size: var(--font-size-3xl);
+    /* Smaller size for mobile */
     font-weight: var(--font-weight-extrabold);
     color: var(--color-white);
     line-height: var(--line-height-tight);
@@ -836,10 +843,12 @@ button {
         transform: scale(1);
         opacity: 0.3;
     }
+
     50% {
         transform: scale(1.1);
         opacity: 0.1;
     }
+
     100% {
         transform: scale(1);
         opacity: 0.3;
@@ -851,32 +860,32 @@ button {
     :root {
         --container-padding: var(--space-6);
     }
-    
+
     .hero__title {
         font-size: var(--font-size-5xl);
     }
-    
+
     .hero__buttons {
         flex-direction: row;
     }
-    
+
     .value-props__grid {
         grid-template-columns: repeat(3, 1fr);
     }
-    
+
     .services__grid {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .machinery__grid {
         grid-template-columns: repeat(3, 1fr);
     }
-    
+
     .contact__grid {
         grid-template-columns: 1fr 1fr;
         align-items: start;
     }
-    
+
     .footer__grid {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -887,11 +896,11 @@ button {
     .header__cta {
         display: inline-flex;
     }
-    
+
     .nav__toggle {
         display: none;
     }
-    
+
     .nav__list {
         display: flex;
         flex-direction: row;
@@ -900,15 +909,15 @@ button {
         padding: 0;
         gap: var(--space-1);
     }
-    
+
     .hero__title {
         font-size: var(--font-size-6xl);
     }
-    
+
     .services__grid {
         grid-template-columns: repeat(3, 1fr);
     }
-    
+
     .section-title {
         font-size: var(--font-size-5xl);
     }
@@ -916,6 +925,7 @@ button {
 
 /* ---------- Animations ---------- */
 @media (prefers-reduced-motion: no-preference) {
+
     .service-card,
     .brand-card,
     .value-prop {
@@ -923,21 +933,54 @@ button {
         transform: translateY(20px);
         animation: fadeInUp 0.6s ease forwards;
     }
-    
-    .service-card:nth-child(1) { animation-delay: 0.1s; }
-    .service-card:nth-child(2) { animation-delay: 0.2s; }
-    .service-card:nth-child(3) { animation-delay: 0.3s; }
-    .service-card:nth-child(4) { animation-delay: 0.4s; }
-    .service-card:nth-child(5) { animation-delay: 0.5s; }
-    .service-card:nth-child(6) { animation-delay: 0.6s; }
-    
-    .brand-card:nth-child(1) { animation-delay: 0.1s; }
-    .brand-card:nth-child(2) { animation-delay: 0.2s; }
-    .brand-card:nth-child(3) { animation-delay: 0.3s; }
-    
-    .value-prop:nth-child(1) { animation-delay: 0.1s; }
-    .value-prop:nth-child(2) { animation-delay: 0.2s; }
-    .value-prop:nth-child(3) { animation-delay: 0.3s; }
+
+    .service-card:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+
+    .service-card:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .service-card:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+
+    .service-card:nth-child(4) {
+        animation-delay: 0.4s;
+    }
+
+    .service-card:nth-child(5) {
+        animation-delay: 0.5s;
+    }
+
+    .service-card:nth-child(6) {
+        animation-delay: 0.6s;
+    }
+
+    .brand-card:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+
+    .brand-card:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .brand-card:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+
+    .value-prop:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+
+    .value-prop:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .value-prop:nth-child(3) {
+        animation-delay: 0.3s;
+    }
 }
 
 @keyframes fadeInUp {
