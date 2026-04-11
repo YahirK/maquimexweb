@@ -261,10 +261,125 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ============================================
+    // Gallery Filter
+    // ============================================
+    const filterBtns = document.querySelectorAll('.gallery__filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    if (filterBtns.length > 0) {
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function () {
+                // Update active button
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const filter = this.dataset.filter;
+
+                galleryItems.forEach((item, index) => {
+                    const match = filter === 'all' || item.dataset.category === filter;
+                    if (match) {
+                        item.classList.remove('hidden');
+                        item.style.animationDelay = (index * 0.05) + 's';
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    }
+
+    // ============================================
+    // Lightbox
+    // ============================================
+    const lightbox    = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxTitle   = document.getElementById('lightboxTitle');
+    const lightboxCat     = document.getElementById('lightboxCat');
+    const lightboxCounter = document.getElementById('lightboxCounter');
+    const lightboxClose   = document.getElementById('lightboxClose');
+    const lightboxPrev    = document.getElementById('lightboxPrev');
+    const lightboxNext    = document.getElementById('lightboxNext');
+    const lightboxBackdrop = document.getElementById('lightboxBackdrop');
+
+    let currentLightboxIndex = 0;
+
+    function getVisibleItems() {
+        return [...document.querySelectorAll('.gallery-item:not(.hidden)')];
+    }
+
+    function openLightbox(clickedItem) {
+        const visible = getVisibleItems();
+        currentLightboxIndex = visible.indexOf(clickedItem);
+        updateLightboxContent(visible);
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        if (lightboxClose) lightboxClose.focus();
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function updateLightboxContent(visible) {
+        if (!visible || visible.length === 0) return;
+        const item = visible[currentLightboxIndex];
+        const img  = item.querySelector('img');
+
+        // Fade transition
+        lightboxImg.style.opacity = '0';
+        setTimeout(() => {
+            lightboxImg.src = img.src.replace(/w=\d+/, 'w=1200');
+            lightboxImg.alt = img.alt;
+            lightboxImg.style.opacity = '1';
+        }, 150);
+
+        lightboxTitle.textContent   = item.dataset.title || '';
+        lightboxCat.textContent     = item.querySelector('.gallery-item__category')?.textContent || '';
+        lightboxCounter.textContent = `${currentLightboxIndex + 1} / ${visible.length}`;
+    }
+
+    function lightboxNavigate(direction) {
+        const visible = getVisibleItems();
+        currentLightboxIndex = (currentLightboxIndex + direction + visible.length) % visible.length;
+        updateLightboxContent(visible);
+    }
+
+    // Attach click to each gallery item
+    if (galleryItems.length > 0) {
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => openLightbox(item));
+        });
+    }
+
+    if (lightbox) {
+        lightboxClose?.addEventListener('click', closeLightbox);
+        lightboxBackdrop?.addEventListener('click', closeLightbox);
+        lightboxPrev?.addEventListener('click', () => lightboxNavigate(-1));
+        lightboxNext?.addEventListener('click', () => lightboxNavigate(1));
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape')      closeLightbox();
+            if (e.key === 'ArrowLeft')   lightboxNavigate(-1);
+            if (e.key === 'ArrowRight')  lightboxNavigate(1);
+        });
+
+        // Touch/swipe support
+        let touchStartX = 0;
+        lightbox.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+        lightbox.addEventListener('touchend', e => {
+            const diff = touchStartX - e.changedTouches[0].screenX;
+            if (Math.abs(diff) > 50) lightboxNavigate(diff > 0 ? 1 : -1);
+        }, { passive: true });
+    }
+
+    // ============================================
     // Initialize
     // ============================================
     updateHeader();
     updateActiveNavLink();
-    
+
     console.log('MAQUIMEX website initialized successfully');
 });
