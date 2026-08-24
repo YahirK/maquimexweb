@@ -1,92 +1,94 @@
 /**
- * MAQUIMEX - Main JavaScript
- * Handles navigation, scroll effects, and form handling
+ * MQMX — Main JavaScript
+ * Architecture: Modular interactive engine
+ * Features: Responsive Nav, Projects Carousel, Animated Counters, Modals, WhatsApp Form
  */
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Cache DOM elements
-    const header = document.getElementById('header');
-    const navToggle = document.getElementById('navToggle');
-    const navList = document.querySelector('.nav__list');
-    const navLinks = document.querySelectorAll('.nav__link');
-    const contactForm = document.getElementById('contactForm');
+document.addEventListener('DOMContentLoaded', function () {
 
-    // ============================================
-    // Mobile Navigation Toggle
-    // ============================================
+    /* ────────────────────────────────────────────
+       1. DOM REFERENCES
+    ──────────────────────────────────────────── */
+    const header        = document.getElementById('header');
+    const navToggle     = document.getElementById('navToggle');
+    const navList       = document.getElementById('navList');
+    const navLinks      = document.querySelectorAll('.nav__link');
+    const contactForm   = document.getElementById('contactForm');
+
+    // Modals
+    const privacyModal  = document.getElementById('privacyModal');
+    const openPrivacyBtn= document.getElementById('openPrivacyBtn');
+    const closePrivacyBtn= document.getElementById('closePrivacyBtn');
+    const privacyBackdrop= document.getElementById('privacyBackdrop');
+    const confirmPrivacyBtn = document.getElementById('confirmPrivacyBtn');
+
+    const videoModal    = document.getElementById('videoModal');
+    const playVideoBtn  = document.getElementById('playVideoBtn');
+    const closeVideoBtn = document.getElementById('closeVideoBtn');
+    const videoBackdrop = document.getElementById('videoBackdrop');
+
+    // Carousel
+    const carouselTrack = document.getElementById('carouselTrack');
+    const carouselSlides = document.querySelectorAll('.project-slide');
+    const carouselPrevBtn= document.getElementById('carouselPrevBtn');
+    const carouselNextBtn= document.getElementById('carouselNextBtn');
+    const carouselDotsContainer = document.getElementById('carouselDots');
+    const carouselCounter = document.getElementById('carouselCounter');
+
+    let currentSlide = 0;
+    const totalSlides = carouselSlides.length;
+    let carouselInterval = null;
+
+
+    /* ────────────────────────────────────────────
+       2. MOBILE MENU & ACTIVE NAV
+    ──────────────────────────────────────────── */
     if (navToggle && navList) {
-        navToggle.addEventListener('click', function() {
-            navList.classList.toggle('active');
-            navToggle.classList.toggle('active');
-            
-            // Update aria-label for accessibility
-            const isOpen = navList.classList.contains('active');
-            navToggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+        navToggle.addEventListener('click', function () {
+            const isOpen = navList.classList.toggle('active');
+            navToggle.classList.toggle('active', isOpen);
+            navToggle.setAttribute('aria-expanded', String(isOpen));
         });
 
-        // Close menu when clicking a link
         navLinks.forEach(link => {
-            link.addEventListener('click', function() {
+            link.addEventListener('click', () => {
                 navList.classList.remove('active');
                 navToggle.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
             });
         });
 
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
+        document.addEventListener('click', function (e) {
             if (!navToggle.contains(e.target) && !navList.contains(e.target)) {
                 navList.classList.remove('active');
                 navToggle.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
             }
         });
     }
 
-    // ============================================
-    // Header Scroll Effect
-    // ============================================
-    let lastScrollY = window.scrollY;
-    
-    function updateHeader() {
-        const currentScrollY = window.scrollY;
-        
-        if (currentScrollY > 100) {
+    // Header scroll blur & active section highlighter
+    let ticking = false;
+
+    function handleScroll() {
+        if (window.scrollY > 50) {
             header.classList.add('header--scrolled');
         } else {
             header.classList.remove('header--scrolled');
         }
-        
-        lastScrollY = currentScrollY;
-    }
 
-    // Throttle scroll events for performance
-    let ticking = false;
-    window.addEventListener('scroll', function() {
-        if (!ticking) {
-            window.requestAnimationFrame(function() {
-                updateHeader();
-                updateActiveNavLink();
-                ticking = false;
-            });
-            ticking = true;
-        }
-    });
-
-    // ============================================
-    // Active Navigation Link on Scroll
-    // ============================================
-    function updateActiveNavLink() {
         const sections = document.querySelectorAll('section[id]');
-        const scrollPosition = window.scrollY + 200;
-        
+        const scrollPosition = window.scrollY + 140;
+
         sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            const sectionId = section.getAttribute('id');
-            
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            const top = section.offsetTop;
+            const height = section.offsetHeight;
+            const id = section.getAttribute('id');
+
+            if (scrollPosition >= top && scrollPosition < top + height) {
                 navLinks.forEach(link => {
                     link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${sectionId}`) {
+                    if (link.getAttribute('href') === `#${id}`) {
                         link.classList.add('active');
                     }
                 });
@@ -94,292 +96,466 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ============================================
-    // Smooth Scroll for Anchor Links
-    // ============================================
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const targetId = this.getAttribute('href');
-            
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                e.preventDefault();
-                
-                const headerHeight = header.offsetHeight;
-                const targetPosition = targetElement.offsetTop - headerHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
+    window.addEventListener('scroll', function () {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                handleScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
+
+    handleScroll();
+
+
+    /* ────────────────────────────────────────────
+       3. INTERACTIVE PROJECTS CAROUSEL
+    ──────────────────────────────────────────── */
+    if (carouselSlides.length > 0 && carouselTrack) {
+
+        // Build dots
+        if (carouselDotsContainer) {
+            carouselDotsContainer.innerHTML = '';
+            carouselSlides.forEach((_, idx) => {
+                const dot = document.createElement('span');
+                dot.className = `carousel-dot ${idx === 0 ? 'active' : ''}`;
+                dot.setAttribute('aria-label', `Ir a diapositiva ${idx + 1}`);
+                dot.addEventListener('click', () => {
+                    goToSlide(idx);
+                    resetAutoplay();
                 });
-            }
-        });
-    });
+                carouselDotsContainer.appendChild(dot);
+            });
+        }
 
-    // ============================================
-    // Contact Form Handling
-    // ============================================
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(contactForm);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const phone = formData.get('phone');
-            const message = formData.get('message');
-            
-            // Validate form
-            if (!name || !email || !message) {
-                showNotification('Por favor, complete todos los campos requeridos.', 'error');
-                return;
+        function updateSlideUI() {
+            carouselSlides.forEach((slide, idx) => {
+                slide.classList.toggle('active', idx === currentSlide);
+            });
+
+            const dots = document.querySelectorAll('.carousel-dot');
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === currentSlide);
+            });
+
+            if (carouselCounter) {
+                const padCurr = String(currentSlide + 1).padStart(2, '0');
+                const padTot  = String(totalSlides).padStart(2, '0');
+                carouselCounter.textContent = `${padCurr} / ${padTot}`;
             }
-            
-            // Since we don't have a backend, redirect to WhatsApp with the message
-            const whatsappMessage = encodeURIComponent(
-                `*Nuevo mensaje de contacto*\n\n` +
-                `*Nombre:* ${name}\n` +
-                `*Email:* ${email}\n` +
-                `*Teléfono:* ${phone || 'No proporcionado'}\n\n` +
-                `*Mensaje:*\n${message}`
-            );
-            
-            const whatsappURL = `https://wa.me/529995677293?text=${whatsappMessage}`;
-            
-            // Show confirmation and redirect
-            showNotification('¡Gracias! Te redirigiremos a WhatsApp para enviar tu mensaje.', 'success');
-            
-            setTimeout(() => {
-                window.open(whatsappURL, '_blank');
-                contactForm.reset();
-            }, 1500);
-        });
+        }
+
+        function goToSlide(index) {
+            currentSlide = (index + totalSlides) % totalSlides;
+            updateSlideUI();
+        }
+
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            goToSlide(currentSlide - 1);
+        }
+
+        if (carouselNextBtn) {
+            carouselNextBtn.addEventListener('click', () => {
+                nextSlide();
+                resetAutoplay();
+            });
+        }
+
+        if (carouselPrevBtn) {
+            carouselPrevBtn.addEventListener('click', () => {
+                prevSlide();
+                resetAutoplay();
+            });
+        }
+
+        function startAutoplay() {
+            carouselInterval = setInterval(nextSlide, 4800);
+        }
+
+        function stopAutoplay() {
+            if (carouselInterval) clearInterval(carouselInterval);
+        }
+
+        function resetAutoplay() {
+            stopAutoplay();
+            startAutoplay();
+        }
+
+        startAutoplay();
+
+        const carouselBox = document.getElementById('projectCarousel');
+        if (carouselBox) {
+            carouselBox.addEventListener('mouseenter', stopAutoplay);
+            carouselBox.addEventListener('mouseleave', startAutoplay);
+
+            // Touch Swipe support
+            let touchStartX = 0;
+            carouselBox.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            carouselBox.addEventListener('touchend', e => {
+                const diff = touchStartX - e.changedTouches[0].screenX;
+                if (Math.abs(diff) > 40) {
+                    if (diff > 0) nextSlide();
+                    else prevSlide();
+                    resetAutoplay();
+                }
+            }, { passive: true });
+        }
     }
 
-    // ============================================
-    // Notification System
-    // ============================================
-    function showNotification(message, type = 'info') {
-        // Remove existing notifications
-        const existingNotification = document.querySelector('.notification');
-        if (existingNotification) {
-            existingNotification.remove();
-        }
-        
-        // Create notification element
-        const notification = document.createElement('div');
-        notification.className = `notification notification--${type}`;
-        notification.innerHTML = `
-            <p>${message}</p>
-            <button class="notification__close" aria-label="Cerrar">&times;</button>
-        `;
-        
-        // Add styles dynamically (if not already in CSS)
-        notification.style.cssText = `
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            max-width: 350px;
-            padding: 16px 20px;
-            border-radius: 8px;
-            background-color: ${type === 'error' ? '#dc3545' : '#28a745'};
-            color: white;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            animation: slideIn 0.3s ease;
-        `;
-        
-        // Add close functionality
-        const closeBtn = notification.querySelector('.notification__close');
-        closeBtn.style.cssText = `
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            padding: 0;
-            line-height: 1;
-        `;
-        closeBtn.addEventListener('click', () => notification.remove());
-        
-        // Add to DOM
-        document.body.appendChild(notification);
-        
-        // Auto-remove after 5 seconds
-        setTimeout(() => {
-            if (notification.parentNode) {
-                notification.style.animation = 'slideOut 0.3s ease';
-                setTimeout(() => notification.remove(), 300);
+
+    /* ────────────────────────────────────────────
+       4. ANIMATED STATS COUNTERS
+    ──────────────────────────────────────────── */
+    function animateCounter(el, target, duration = 1800) {
+        const start = performance.now();
+        const prefix = el.dataset.prefix || '';
+        const suffix = el.dataset.suffix || '';
+        const isDecimal = String(target).includes('.');
+
+        function step(now) {
+            const progress = Math.min((now - start) / duration, 1);
+            // Ease-out expo
+            const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+            const current = isDecimal 
+                ? (target * ease).toFixed(1) 
+                : Math.round(target * ease);
+
+            // Format thousands
+            const formatted = current.toLocaleString('es-MX');
+            el.textContent = `${prefix}${formatted}${suffix}`;
+
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            } else {
+                el.textContent = `${prefix}${target.toLocaleString('es-MX')}${suffix}`;
             }
-        }, 5000);
+        }
+        requestAnimationFrame(step);
     }
 
-    // Add animation keyframes
-    const styleSheet = document.createElement('style');
-    styleSheet.textContent = `
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-        @keyframes slideOut {
-            from { transform: translateX(0); opacity: 1; }
-            to { transform: translateX(100%); opacity: 0; }
-        }
-    `;
-    document.head.appendChild(styleSheet);
-
-    // ============================================
-    // Intersection Observer for Animations
-    // ============================================
-    if ('IntersectionObserver' in window) {
-        const animatedElements = document.querySelectorAll('.service-card, .brand-card, .value-prop');
-        
-        const observer = new IntersectionObserver((entries) => {
+    const statsCounters = document.getElementById('statsCounters');
+    if (statsCounters && 'IntersectionObserver' in window) {
+        let animated = false;
+        const statsIO = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                    observer.unobserve(entry.target);
+                if (entry.isIntersecting && !animated) {
+                    animated = true;
+                    const counters = statsCounters.querySelectorAll('.stat-card__number');
+                    counters.forEach(counter => {
+                        const rawTarget = parseFloat(counter.dataset.target || counter.textContent.replace(/[^0-9.]/g, ''));
+                        if (!isNaN(rawTarget)) {
+                            animateCounter(counter, rawTarget, 2000);
+                        }
+                    });
+                    statsIO.unobserve(entry.target);
                 }
             });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        });
-        
-        animatedElements.forEach(el => {
-            el.style.animationPlayState = 'paused';
-            observer.observe(el);
+        }, { threshold: 0.25 });
+
+        statsIO.observe(statsCounters);
+    }
+
+
+    /* ────────────────────────────────────────────
+       5. SCROLL REVEAL OBSERVER
+    ──────────────────────────────────────────── */
+    if ('IntersectionObserver' in window) {
+        const revealIO = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    revealIO.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
+    } else {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('revealed'));
+    }
+
+
+    /* ────────────────────────────────────────────
+       6. MODALS HANDLER (PRIVACY & VIDEO)
+    ──────────────────────────────────────────── */
+    function toggleModal(modal, show) {
+        if (!modal) return;
+        if (show) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        } else {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    // Privacy Modal
+    if (openPrivacyBtn) {
+        openPrivacyBtn.addEventListener('click', () => toggleModal(privacyModal, true));
+    }
+    if (closePrivacyBtn) {
+        closePrivacyBtn.addEventListener('click', () => toggleModal(privacyModal, false));
+    }
+    if (privacyBackdrop) {
+        privacyBackdrop.addEventListener('click', () => toggleModal(privacyModal, false));
+    }
+    if (confirmPrivacyBtn) {
+        confirmPrivacyBtn.addEventListener('click', () => toggleModal(privacyModal, false));
+    }
+
+    // Video Modal
+    if (playVideoBtn) {
+        playVideoBtn.addEventListener('click', () => toggleModal(videoModal, true));
+    }
+    if (closeVideoBtn) {
+        closeVideoBtn.addEventListener('click', () => toggleModal(videoModal, false));
+    }
+    if (videoBackdrop) {
+        videoBackdrop.addEventListener('click', () => toggleModal(videoModal, false));
+    }
+
+    // Escape Key for Modals
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            if (privacyModal?.classList.contains('active')) toggleModal(privacyModal, false);
+            if (videoModal?.classList.contains('active')) toggleModal(videoModal, false);
+        }
+    });
+
+
+    /* ────────────────────────────────────────────
+       7. CONTACT FORM → WHATSAPP INTEGRATION
+    ──────────────────────────────────────────── */
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const name = contactForm.name.value.trim();
+            const email = contactForm.email.value.trim();
+            const phone = contactForm.phone.value.trim();
+            const message = contactForm.message.value.trim();
+
+            if (!name || !email || !phone || !message) {
+                showToast('Por favor completa todos los campos requeridos.', 'error');
+                return;
+            }
+
+            const payload = encodeURIComponent(
+                `*NUEVA SOLICITUD — MQMX WEB*\n\n` +
+                `*Cliente / Contacto:* ${name}\n` +
+                `*Email:* ${email}\n` +
+                `*Teléfono:* ${phone}\n\n` +
+                `*Requerimiento Técnico:* \n${message}\n\n` +
+                `_Enviado desde el portal oficial de MQMX_`
+            );
+
+            showToast('¡Información validada! Conectando con WhatsApp…', 'success');
+
+            setTimeout(() => {
+                window.open(`https://wa.me/529995677293?text=${payload}`, '_blank');
+                contactForm.reset();
+            }, 900);
         });
     }
 
-    // ============================================
-    // Gallery Filter
-    // ============================================
-    const filterBtns = document.querySelectorAll('.gallery__filter-btn');
-    const galleryItems = document.querySelectorAll('.gallery-item');
 
-    if (filterBtns.length > 0) {
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', function () {
-                // Update active button
-                filterBtns.forEach(b => b.classList.remove('active'));
+    /* ────────────────────────────────────────────
+       8. TOAST NOTIFICATION UTILITY
+    ──────────────────────────────────────────── */
+    function showToast(msg, type = 'info') {
+        document.querySelector('.mq-toast')?.remove();
+
+        const toast = document.createElement('div');
+        toast.className = 'mq-toast';
+        toast.setAttribute('role', 'alert');
+        toast.innerHTML = `<span>${msg}</span><button class="mq-toast__close" aria-label="Cerrar">×</button>`;
+
+        const bg = type === 'error' ? '#9e2a2b' : type === 'success' ? '#1b4d3e' : '#141921';
+        const border = type === 'error' ? '#d90429' : type === 'success' ? '#25d366' : '#d97736';
+
+        Object.assign(toast.style, {
+            position:       'fixed',
+            bottom:         '30px',
+            left:           '24px',
+            maxWidth:       '380px',
+            padding:        '14px 18px',
+            borderRadius:   '4px',
+            background:     bg,
+            color:          '#ffffff',
+            boxShadow:      '0 12px 36px rgba(0,0,0,0.6)',
+            zIndex:         '99999',
+            display:        'flex',
+            alignItems:     'center',
+            justifyContent: 'space-between',
+            gap:            '14px',
+            fontFamily:     '"DM Sans", sans-serif',
+            fontSize:       '0.88rem',
+            borderLeft:     `4px solid ${border}`,
+            animation:      'mqToastIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards'
+        });
+
+        const closeBtn = toast.querySelector('.mq-toast__close');
+        Object.assign(closeBtn.style, {
+            background: 'none',
+            border:     'none',
+            color:      '#ffffff',
+            fontSize:   '1.3rem',
+            cursor:     'pointer',
+            opacity:    '0.7',
+            padding:    '0'
+        });
+        closeBtn.addEventListener('click', () => toast.remove());
+        document.body.appendChild(toast);
+
+        setTimeout(() => toast?.remove(), 4500);
+    }
+
+    // Keyframe for toast
+    const toastStyle = document.createElement('style');
+    toastStyle.textContent = `
+        @keyframes mqToastIn {
+            from { transform: translateY(100%); opacity: 0; }
+            to   { transform: translateY(0); opacity: 1; }
+        }
+    `;
+    document.head.appendChild(toastStyle);
+
+    /* ────────────────────────────────────────────
+       SERVICES IMAGE TAB
+    ──────────────────────────────────────────── */
+    const serviceRows = document.querySelectorAll('.service-row');
+    const servicePhoto = document.querySelector('.services-summary__photo');
+
+    if (serviceRows.length && servicePhoto) {
+        serviceRows.forEach(row => {
+            row.addEventListener('click', function () {
+                // Remove active class from all
+                serviceRows.forEach(r => r.classList.remove('active'));
+                
+                // Add active class to clicked row
                 this.classList.add('active');
 
-                const filter = this.dataset.filter;
-
-                galleryItems.forEach((item, index) => {
-                    const match = filter === 'all' || item.dataset.category === filter;
-                    if (match) {
-                        item.classList.remove('hidden');
-                        item.style.animationDelay = (index * 0.05) + 's';
-                    } else {
-                        item.classList.add('hidden');
-                    }
-                });
+                // Update image
+                const newImg = this.getAttribute('data-img');
+                if (newImg) {
+                    // Optional: add a tiny fade effect by resetting opacity
+                    servicePhoto.style.opacity = '0.5';
+                    setTimeout(() => {
+                        servicePhoto.src = newImg;
+                        servicePhoto.style.opacity = '1';
+                    }, 150);
+                }
             });
         });
     }
 
-    // ============================================
-    // Lightbox
-    // ============================================
-    const lightbox    = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const lightboxTitle   = document.getElementById('lightboxTitle');
-    const lightboxCat     = document.getElementById('lightboxCat');
-    const lightboxCounter = document.getElementById('lightboxCounter');
-    const lightboxClose   = document.getElementById('lightboxClose');
-    const lightboxPrev    = document.getElementById('lightboxPrev');
-    const lightboxNext    = document.getElementById('lightboxNext');
-    const lightboxBackdrop = document.getElementById('lightboxBackdrop');
+    /* ────────────────────────────────────────────
+       ABOUT SECTION — FACTORY CAROUSEL
+    ──────────────────────────────────────────── */
+    const aboutCarousel = document.getElementById('aboutCarousel');
+    const aboutSlides = document.querySelectorAll('.about-carousel__slide');
+    const aboutPrevBtn = document.getElementById('aboutPrevBtn');
+    const aboutNextBtn = document.getElementById('aboutNextBtn');
+    const aboutDotsContainer = document.getElementById('aboutCarouselDots');
 
-    let currentLightboxIndex = 0;
+    if (aboutCarousel && aboutSlides.length) {
+        let currentAboutSlide = 0;
+        const totalAboutSlides = aboutSlides.length;
+        let aboutInterval = null;
 
-    function getVisibleItems() {
-        return [...document.querySelectorAll('.gallery-item:not(.hidden)')];
-    }
+        // Build dots
+        if (aboutDotsContainer) {
+            aboutDotsContainer.innerHTML = '';
+            aboutSlides.forEach((_, idx) => {
+                const dot = document.createElement('span');
+                dot.className = `about-carousel__dot ${idx === 0 ? 'active' : ''}`;
+                dot.setAttribute('aria-label', `Ver foto de fábrica ${idx + 1}`);
+                dot.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    goToAboutSlide(idx);
+                    resetAboutAutoplay();
+                });
+                aboutDotsContainer.appendChild(dot);
+            });
+        }
 
-    function openLightbox(clickedItem) {
-        const visible = getVisibleItems();
-        currentLightboxIndex = visible.indexOf(clickedItem);
-        updateLightboxContent(visible);
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        if (lightboxClose) lightboxClose.focus();
-    }
+        function updateAboutSlideUI() {
+            aboutSlides.forEach((slide, idx) => {
+                slide.classList.toggle('active', idx === currentAboutSlide);
+            });
 
-    function closeLightbox() {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
-    }
+            const dots = document.querySelectorAll('.about-carousel__dot');
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === currentAboutSlide);
+            });
+        }
 
-    function updateLightboxContent(visible) {
-        if (!visible || visible.length === 0) return;
-        const item = visible[currentLightboxIndex];
-        const img  = item.querySelector('img');
+        function goToAboutSlide(index) {
+            currentAboutSlide = (index + totalAboutSlides) % totalAboutSlides;
+            updateAboutSlideUI();
+        }
 
-        // Fade transition
-        lightboxImg.style.opacity = '0';
-        setTimeout(() => {
-            lightboxImg.src = img.src.replace(/w=\d+/, 'w=1200');
-            lightboxImg.alt = img.alt;
-            lightboxImg.style.opacity = '1';
-        }, 150);
+        function nextAboutSlide() {
+            goToAboutSlide(currentAboutSlide + 1);
+        }
 
-        lightboxTitle.textContent   = item.dataset.title || '';
-        lightboxCat.textContent     = item.querySelector('.gallery-item__category')?.textContent || '';
-        lightboxCounter.textContent = `${currentLightboxIndex + 1} / ${visible.length}`;
-    }
+        function prevAboutSlide() {
+            goToAboutSlide(currentAboutSlide - 1);
+        }
 
-    function lightboxNavigate(direction) {
-        const visible = getVisibleItems();
-        currentLightboxIndex = (currentLightboxIndex + direction + visible.length) % visible.length;
-        updateLightboxContent(visible);
-    }
+        if (aboutNextBtn) {
+            aboutNextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                nextAboutSlide();
+                resetAboutAutoplay();
+            });
+        }
 
-    // Attach click to each gallery item
-    if (galleryItems.length > 0) {
-        galleryItems.forEach(item => {
-            item.addEventListener('click', () => openLightbox(item));
+        if (aboutPrevBtn) {
+            aboutPrevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                prevAboutSlide();
+                resetAboutAutoplay();
+            });
+        }
+
+        // Clicking the slide advances to next
+        aboutSlides.forEach(slide => {
+            slide.addEventListener('click', () => {
+                nextAboutSlide();
+                resetAboutAutoplay();
+            });
         });
-    }
 
-    if (lightbox) {
-        lightboxClose?.addEventListener('click', closeLightbox);
-        lightboxBackdrop?.addEventListener('click', closeLightbox);
-        lightboxPrev?.addEventListener('click', () => lightboxNavigate(-1));
-        lightboxNext?.addEventListener('click', () => lightboxNavigate(1));
+        // Autoplay every 4.5 seconds
+        function startAboutAutoplay() {
+            if (aboutInterval) clearInterval(aboutInterval);
+            aboutInterval = setInterval(nextAboutSlide, 4500);
+        }
 
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (!lightbox.classList.contains('active')) return;
-            if (e.key === 'Escape')      closeLightbox();
-            if (e.key === 'ArrowLeft')   lightboxNavigate(-1);
-            if (e.key === 'ArrowRight')  lightboxNavigate(1);
+        function resetAboutAutoplay() {
+            startAboutAutoplay();
+        }
+
+        aboutCarousel.addEventListener('mouseenter', () => {
+            if (aboutInterval) clearInterval(aboutInterval);
         });
 
-        // Touch/swipe support
-        let touchStartX = 0;
-        lightbox.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
-        lightbox.addEventListener('touchend', e => {
-            const diff = touchStartX - e.changedTouches[0].screenX;
-            if (Math.abs(diff) > 50) lightboxNavigate(diff > 0 ? 1 : -1);
-        }, { passive: true });
+        aboutCarousel.addEventListener('mouseleave', () => {
+            startAboutAutoplay();
+        });
+
+        startAboutAutoplay();
     }
 
-    // ============================================
-    // Initialize
-    // ============================================
-    updateHeader();
-    updateActiveNavLink();
-
-    console.log('MAQUIMEX website initialized successfully');
+    console.log('%cMQMX ⚙️  Comercializadora de Maquinaria Industrial & Metallium', 'color:#E66826;font-weight:bold;font-size:13px;');
 });
+

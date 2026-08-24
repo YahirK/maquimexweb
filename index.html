@@ -5,509 +5,775 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="MAQUIMEX - Comercializadora de Maquinaria Industrial. Distribuidores autorizados de KAUP, BESSER y CGM. Servicios de estructura metálica, soldadura, obra civil y más.">
+        content="MQMX — Comercializadora de Maquinaria Industrial en Mérida, Yucatán. Estructura metálica pesada, soldadura especializada, corte CNC plasma, diseño 2D/3D y soluciones de ingeniería industrial.">
     <meta name="keywords"
-        content="maquinaria industrial, montacargas, prefabricados concreto, estructura metálica, KAUP, BESSER, CGM, México">
+        content="maquinaria industrial, estructura metálica, soldadura, CNC plasma, diseño 3D, Mérida Yucatán, MQMX, Metallium, SIEM, comercializadora de maquinaria">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="MAQUIMEX - Comercializadora de Maquinaria Industrial">
+    <meta property="og:title" content="MQMX — Comercializadora de Maquinaria Industrial">
     <meta property="og:description"
-        content="Distribuidores autorizados de KAUP, BESSER y CGM. Soluciones integrales para la industria.">
+        content="Ingeniería, fabricación y montaje de estructuras metálicas, corte CNC y venta de maquinaria industrial en Mérida, Yucatán.">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_MX">
 
-    <title>MAQUIMEX | Comercializadora de Maquinaria Industrial</title>
+    <title>MQMX | Comercializadora de Maquinaria Industrial — Mérida, Yucatán</title>
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <!-- Tipografía local: GC Vensca Mono -->
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-    <!-- Header -->
+
+    <!-- ═══════════════════════════════════════
+         HEADER / NAVEGACIÓN
+    ════════════════════════════════════════ -->
     <header class="header" id="header">
         <div class="container header__container">
-            <a href="index.html" class="header__logo">
-                <img src="images/logo-maquimex.jpeg" alt="MAQUIMEX - Comercializadora de Maquinaria Industrial" class="logo__img" />
+
+            <a href="#inicio" class="header__logo" aria-label="Metallium — Inicio">
+                <img src="images/logo-metallium.png" alt="Metallium" class="logo__img" />
             </a>
 
-            <nav class="nav" id="nav">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="#inicio" class="nav__link active">Inicio</a></li>
-                    <li class="nav__item"><a href="#maquinaria" class="nav__link">Colaboradores</a></li>
+            <nav class="nav" id="nav" aria-label="Navegación principal">
+                <ul class="nav__list" id="navList">
+                    <li class="nav__item"><a href="#inicio" class="nav__link active">Metallium</a></li>
+                    <li class="nav__item"><a href="#nosotros" class="nav__link">Quiénes Somos</a></li>
                     <li class="nav__item"><a href="#servicios" class="nav__link">Servicios</a></li>
                     <li class="nav__item"><a href="#proyectos" class="nav__link">Proyectos</a></li>
+                    <li class="nav__item"><a href="#mqmx" class="nav__link">MQMX</a></li>
                     <li class="nav__item"><a href="#contacto" class="nav__link">Contacto</a></li>
                 </ul>
             </nav>
 
-            <a href="#contacto" class="btn btn--primary header__cta">Cotizar</a>
+            <div class="header__actions">
+                <a href="#contacto" class="btn btn--primary header__cta">Cotizar ahora</a>
+            </div>
 
-            <button class="nav__toggle" id="navToggle" aria-label="Abrir menú">
+            <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
+
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="inicio">
-        <div class="hero__background">
-            <div class="hero__overlay"></div>
+
+    <!-- ═══════════════════════════════════════
+         HERO — IMAGEN REAL + SLOGAN
+    ════════════════════════════════════════ -->
+    <section class="img-hero" id="inicio">
+
+        <!-- Imagen de fondo real con overlay industrial -->
+        <div class="img-hero__media">
+            <img
+                src="images/ISSST CHETUMAL 2.JPG"
+                alt="Proyecto de estructura metálica MQMX — ISSSTE Chetumal"
+                class="img-hero__bg"
+            />
+            <!-- Gradiente oscuro para máxima legibilidad del texto -->
+            <div class="img-hero__overlay"></div>
+            <!-- Textura de líneas industriales -->
+            <div class="img-hero__scanlines"></div>
         </div>
-        <div class="container hero__container">
-            <div class="hero__content">
-                <h1 class="hero__title">
-                    Comercializadora de<br>
-                    <span class="hero__title--accent">Maquinaria Industrial</span>
+
+        <div class="container img-hero__container">
+            <div class="img-hero__content">
+
+                <!-- Badge / Marca -->
+                <div class="img-hero__badge">
+                    <span class="img-hero__badge-pulse"></span>
+                    <span class="img-hero__badge-text">METALLIUM BY MQMX</span>
+                </div>
+
+                <!-- Slogan principal -->
+                <h1 class="img-hero__title">
+                    Fabricamos<br>
+                    <span class="img-hero__title-accent">al pie de la letra.</span>
                 </h1>
-                <p class="hero__subtitle">Innovación y calidad para el sector industrial. Distribuidores autorizados de
-                    las mejores marcas del mercado.</p>
-                <div class="hero__buttons">
-                    <a href="#proyectos" class="btn btn--primary btn--large">Ver Proyectos</a>
-                    <a href="https://wa.me/529995677293?text=Hola,%20me%20interesa%20cotizar%20maquinaria"
-                        class="btn btn--outline btn--large" target="_blank" rel="noopener">
-                        <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                        </svg>
-                        Cotizar por WhatsApp
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Value Proposition -->
-    <section class="value-props">
-        <div class="container">
-            <div class="value-props__grid">
-                <div class="value-prop">
-                    <div class="value-prop__icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="7" width="20" height="14" rx="2" />
-                            <path d="M16 7V5a4 4 0 00-8 0v2" />
-                        </svg>
-                    </div>
-                    <h3 class="value-prop__title">Venta de Maquinaria</h3>
-                    <p class="value-prop__text">Equipos industriales de las mejores marcas con garantía y soporte
-                        técnico.</p>
-                </div>
-                <div class="value-prop">
-                    <div class="value-prop__icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path
-                                d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" />
-                        </svg>
-                    </div>
-                    <h3 class="value-prop__title">Servicio Técnico</h3>
-                    <p class="value-prop__text">Mantenimiento, reparación e instalación por técnicos certificados.</p>
-                </div>
-                <div class="value-prop">
-                    <div class="value-prop__icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M2 20h20M5 20V10l7-7 7 7v10M9 20v-6h6v6" />
-                        </svg>
-                    </div>
-                    <h3 class="value-prop__title">Proyectos Llave en Mano</h3>
-                    <p class="value-prop__text">Soluciones integrales desde el diseño hasta la implementación final.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+                <!-- Bajada descriptiva -->
+                <p class="img-hero__lead">
+                    Ingeniería, habilitado y montaje de estructuras metálicas pesadas, naves industriales y cortes de precisión en Mérida, Yucatán y todo el sureste.
+                </p>
 
-    <!-- Services Section -->
-    <section class="services" id="servicios">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Nuestros Servicios</h2>
-                <p class="section-subtitle">Ofrecemos una amplia gama de servicios para satisfacer las necesidades de la
-                    industria</p>
-            </div>
-            <div class="services__grid">
-                <article class="service-card">
-                    <div class="service-card__icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 21V10L12 3L20 10V21H14V14H10V21H4Z" />
-                        </svg>
-                    </div>
-                    <h3 class="service-card__title">Estructura Metálica</h3>
-                    <p class="service-card__text">Diseño y fabricación de estructuras de acero para edificios, naves
-                        industriales y soportes pesados.</p>
-                    <a href="#contacto" class="service-card__link">Solicitar información →</a>
-                </article>
-                <article class="service-card">
-                    <div class="service-card__icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2L2 7L12 12L22 7L12 2Z" />
-                            <path d="M2 17L12 22L22 17" />
-                            <path d="M2 12L12 17L22 12" />
-                        </svg>
-                    </div>
-                    <h3 class="service-card__title">Soldadura</h3>
-                    <p class="service-card__text">Servicios de soldadura especializada en diversos materiales y
-                        espesores.</p>
-                    <a href="#contacto" class="service-card__link">Solicitar información →</a>
-                </article>
-                <article class="service-card">
-                    <div class="service-card__icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path
-                                d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" />
-                        </svg>
-                    </div>
-                    <h3 class="service-card__title">Reparaciones en Sitio</h3>
-                    <p class="service-card__text">Mantenimiento y reparación in situ de maquinaria pesada, minimizando
-                        tiempos de inactividad.</p>
-                    <a href="#contacto" class="service-card__link">Solicitar información →</a>
-                </article>
-                <article class="service-card">
-                    <div class="service-card__icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10" />
-                            <path d="M12 6v6l4 2" />
-                        </svg>
-                    </div>
-                    <h3 class="service-card__title">Piezas Artísticas</h3>
-                    <p class="service-card__text">Fabricación de piezas únicas y esculturas metálicas a medida para
-                        proyectos arquitectónicos y decorativos.</p>
-                    <a href="#contacto" class="service-card__link">Solicitar información →</a>
-                </article>
-                <article class="service-card">
-                    <div class="service-card__icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M3 3h18v18H3zM7 7h10M7 12h10M7 17h6" />
-                            <path d="M17 14l2 2-2 2" />
-                        </svg>
-                    </div>
-                    <h3 class="service-card__title">Cortes CNC Plasma</h3>
-                    <p class="service-card__text">Corte de precisión por plasma con control numérico computarizado en
-                        una amplia variedad de materiales metálicos y espesores.</p>
-                    <a href="#contacto" class="service-card__link">Solicitar información →</a>
-                </article>
-                <article class="service-card">
-                    <div class="service-card__icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="2" width="20" height="20" rx="2" />
-                            <path d="M6 12h12M12 6v12" />
-                            <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                            <path d="M2 17l10 5 10-5" />
-                        </svg>
-                    </div>
-                    <h3 class="service-card__title">Diseño 2D y 3D</h3>
-                    <p class="service-card__text">Elaboración de planos técnicos en 2D y modelado tridimensional de piezas, ensambles y estructuras industriales con alta precisión.</p>
-                    <a href="#contacto" class="service-card__link">Solicitar información →</a>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Machinery/Products Section -->
-    <section class="machinery" id="maquinaria">
-        <div class="container">
-            <div class="section-header section-header--light">
-                <h2 class="section-title">Colaboradores</h2>
-                <p class="section-subtitle">Trabajamos junto a las mejores empresas para ofrecer soluciones industriales
-                    de alta calidad</p>
-            </div>
-            <div class="machinery__grid">
-                <article class="brand-card">
-                    <div class="brand-card__logo">
-                        <span class="brand-card__name">SIEM</span>
-                    </div>
-                    <h3 class="brand-card__title">Soluciones Industriales</h3>
-                    <ul class="brand-card__list">
-                        <li>Equipos y maquinaria industrial</li>
-                        <li>Automatización de procesos</li>
-                        <li>Soporte técnico especializado</li>
-                        <li>Proyectos llave en mano</li>
-                    </ul>
-                    <a href="#contacto" class="btn btn--secondary">Cotizar</a>
-                </article>
-                <article class="brand-card">
-                    <div class="brand-card__logo">
-                        <span class="brand-card__name">Metallium</span>
-                    </div>
-                    <h3 class="brand-card__title">Soluciones Metálicas</h3>
-                    <ul class="brand-card__list">
-                        <li>Fabricación de estructuras metálicas</li>
-                        <li>Corte y conformado de metales</li>
-                        <li>Acabados y tratamientos superficiales</li>
-                        <li>Piezas a medida</li>
-                    </ul>
-                    <a href="#contacto" class="btn btn--secondary">Cotizar</a>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects / Gallery Section -->
-    <section class="projects" id="proyectos">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Nuestros Proyectos</h2>
-                <p class="section-subtitle">Galería de trabajos realizados — desde estructuras metálicas hasta diseños CNC de precisión</p>
-            </div>
-
-            <!-- Gallery Filters -->
-            <div class="gallery__filters" role="group" aria-label="Filtrar proyectos">
-                <button class="gallery__filter-btn active" data-filter="all" id="filter-all">Todos</button>
-                <button class="gallery__filter-btn" data-filter="estructura" id="filter-estructura">Estructura Metálica</button>
-                <button class="gallery__filter-btn" data-filter="cnc" id="filter-cnc">Corte CNC</button>
-                <button class="gallery__filter-btn" data-filter="soldadura" id="filter-soldadura">Soldadura</button>
-                <button class="gallery__filter-btn" data-filter="diseno" id="filter-diseno">Diseño 2D / 3D</button>
-            </div>
-
-            <!-- Masonry Gallery Grid -->
-            <div class="gallery__grid" id="galleryGrid">
-
-                <div class="gallery-item" data-category="estructura" data-title="Nave Industrial Tipo B" id="gitem-1">
-                    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80&fit=crop" alt="Nave Industrial" loading="lazy">
-                    <div class="gallery-item__overlay">
-                        <span class="gallery-item__category">Estructura Metálica</span>
-                        <h4 class="gallery-item__title">Nave Industrial Tipo B</h4>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="cnc" data-title="Corte Plasma CNC — Lámina 6mm" id="gitem-2">
-                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80&fit=crop" alt="Corte CNC Plasma" loading="lazy">
-                    <div class="gallery-item__overlay">
-                        <span class="gallery-item__category">Corte CNC</span>
-                        <h4 class="gallery-item__title">Corte Plasma CNC — Lámina 6mm</h4>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="soldadura" data-title="Soldadura MIG de Precisión" id="gitem-3">
-                    <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=600&q=80&fit=crop" alt="Soldadura" loading="lazy">
-                    <div class="gallery-item__overlay">
-                        <span class="gallery-item__category">Soldadura</span>
-                        <h4 class="gallery-item__title">Soldadura MIG de Precisión</h4>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="diseno" data-title="Modelado 3D — Componente Industrial" id="gitem-4">
-                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3dcd3590?w=600&q=80&fit=crop" alt="Diseño 3D" loading="lazy">
-                    <div class="gallery-item__overlay">
-                        <span class="gallery-item__category">Diseño 3D</span>
-                        <h4 class="gallery-item__title">Modelado 3D — Componente Industrial</h4>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="estructura" data-title="Marco Modular de Acero" id="gitem-5">
-                    <img src="https://images.unsplash.com/photo-1590959651373-a3db0f38a961?w=600&q=80&fit=crop" alt="Marco Modular de Acero" loading="lazy">
-                    <div class="gallery-item__overlay">
-                        <span class="gallery-item__category">Estructura Metálica</span>
-                        <h4 class="gallery-item__title">Marco Modular de Acero</h4>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="cnc" data-title="Figuras Artísticas en Acero" id="gitem-6">
-                    <img src="https://images.unsplash.com/photo-1565008576549-57569a49371d?w=600&q=80&fit=crop" alt="Corte Artístico CNC" loading="lazy">
-                    <div class="gallery-item__overlay">
-                        <span class="gallery-item__category">Corte CNC</span>
-                        <h4 class="gallery-item__title">Figuras Artísticas en Acero</h4>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="soldadura" data-title="Unión Estructural Soldada" id="gitem-7">
-                    <img src="https://images.unsplash.com/photo-1605745341112-85968b19335b?w=600&q=80&fit=crop" alt="Unión Soldada" loading="lazy">
-                    <div class="gallery-item__overlay">
-                        <span class="gallery-item__category">Soldadura</span>
-                        <h4 class="gallery-item__title">Unión Estructural Soldada</h4>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="diseno" data-title="Plano Técnico 2D" id="gitem-8">
-                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80&fit=crop" alt="Plano Técnico 2D" loading="lazy">
-                    <div class="gallery-item__overlay">
-                        <span class="gallery-item__category">Diseño 2D</span>
-                        <h4 class="gallery-item__title">Plano Técnico 2D</h4>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="estructura" data-title="Soporte para Maquinaria Pesada" id="gitem-9">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80&fit=crop" alt="Soporte Industrial" loading="lazy">
-                    <div class="gallery-item__overlay">
-                        <span class="gallery-item__category">Estructura Metálica</span>
-                        <h4 class="gallery-item__title">Soporte para Maquinaria Pesada</h4>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="cnc" data-title="Letras y Relieves Decorativos" id="gitem-10">
-                    <img src="https://images.unsplash.com/photo-1508396463301-1b08c37c4f30?w=600&q=80&fit=crop" alt="Letras CNC" loading="lazy">
-                    <div class="gallery-item__overlay">
-                        <span class="gallery-item__category">Corte CNC</span>
-                        <h4 class="gallery-item__title">Letras y Relieves Decorativos</h4>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="soldadura" data-title="Tubería Industrial" id="gitem-11">
-                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80&fit=crop" alt="Tubería Industrial" loading="lazy">
-                    <div class="gallery-item__overlay">
-                        <span class="gallery-item__category">Soldadura</span>
-                        <h4 class="gallery-item__title">Tubería Industrial</h4>
-                    </div>
-                </div>
-
-                <div class="gallery-item" data-category="diseno" data-title="Render 3D Estructura" id="gitem-12">
-                    <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600&q=80&fit=crop" alt="Render 3D" loading="lazy">
-                    <div class="gallery-item__overlay">
-                        <span class="gallery-item__category">Diseño 3D</span>
-                        <h4 class="gallery-item__title">Render 3D Estructura</h4>
-                    </div>
+                <!-- CTAs -->
+                <div class="img-hero__ctas">
+                    <a href="#contacto" class="btn btn--primary btn--large">Cotizar ahora</a>
+                    <a href="#proyectos" class="btn btn--outline btn--large">Ver Proyectos</a>
                 </div>
 
             </div>
         </div>
+
+        <!-- HUD técnico inferior -->
+        <div class="img-hero__hud">
+            <span>MQMX · MID · MEX</span>
+            <span>INGENIERÍA & ESTRUCTURAS METÁLICAS</span>
+            <span>METALLIUM ALLIANCE</span>
+        </div>
+
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contacto">
+
+    <!-- ═══════════════════════════════════════
+         SECCIÓN: QUIÉNES SOMOS (INSPIRACIÓN METALTEC)
+    ════════════════════════════════════════ -->
+    <section class="about-section" id="nosotros">
         <div class="container">
-            <div class="contact__grid">
-                <div class="contact__info">
-                    <div class="contact__logo">
-                        <img src="images/logo-maquimex.jpeg" alt="MAQUIMEX" class="logo__img logo__img--dark" style="height:80px;" />
+            <div class="about-section__grid">
+
+                <div class="about-section__content reveal">
+                    <div class="about-section__decorative-bars">
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </div>
-                    <div class="contact__details">
-                        <div class="contact__item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                                <path d="M22 6l-10 7L2 6" />
-                            </svg>
-                            <a href="mailto:proyectos@cmimaquimex.com">proyectos@cmimaquimex.com</a>
+
+                    <p class="section-tag">Nuestra Empresa</p>
+                    <h2 class="section-title">QUIÉNES <span>SOMOS</span></h2>
+
+                    <p class="about-section__lead">
+                        Empresa mexicana fundada en Mérida, Yucatán, especializada en diseño, 
+                        fabricación y montaje de estructuras de acero, soldadura de alta ingeniería, 
+                        corte CNC plasma y comercialización de maquinaria industrial.
+                    </p>
+
+                    <p class="about-section__body">
+                        Respaldados por alianzas estratégicas como <strong>Metallium</strong> y <strong>SIEM</strong>, 
+                        ofrecemos soluciones integrales llave en mano para naves industriales, complejos comerciales 
+                        y piezas de alta demanda técnica, asegurando el cumplimiento riguroso de normativas y estándares de resistencia.
+                    </p>
+
+                    <div class="about-section__highlights">
+                        <div class="about-highlight">
+                            <span class="about-highlight__icon">✦</span>
+                            <span>Capacidad de producción y montaje en sitio</span>
                         </div>
-                        <div class="contact__item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path
-                                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z" />
-                            </svg>
-                            <div>
-                                <p><strong>Tel:</strong> 999 152 8424 (Alfredo Dorantes)</p>
-                                <p><strong>Cel:</strong> 999 567 7293 (WhatsApp Oficina)</p>
+                        <div class="about-highlight">
+                            <span class="about-highlight__icon">✦</span>
+                            <span>Cálculo estructural y modelado digital 2D/3D</span>
+                        </div>
+                    </div>
+
+                    <div class="about-section__action">
+                        <a href="#proyectos" class="btn btn--primary">Ver Proyectos</a>
+                    </div>
+                </div>
+
+                <div class="about-section__visual reveal reveal-delay-2">
+                    <div class="about-carousel" id="aboutCarousel" aria-label="Galería de instalaciones y fábrica MQMX">
+                        <div class="about-carousel__track" id="aboutCarouselTrack">
+                            <div class="about-carousel__slide active">
+                                <img src="images/fabrica-1.jpg" alt="Instalaciones y planta de fabricación MQMX — Vista 1" />
+                            </div>
+                            <div class="about-carousel__slide">
+                                <img src="images/fabrica-2.jpg" alt="Área de habilitado y maquinaria MQMX — Vista 2" />
+                            </div>
+                            <div class="about-carousel__slide">
+                                <img src="images/fabrica-3.jpg" alt="Estructuras y taller industrial MQMX — Vista 3" />
+                            </div>
+                            <div class="about-carousel__slide">
+                                <img src="images/fabrica-4.jpg" alt="Planta de producción y ensamble MQMX — Vista 4" />
                             </div>
                         </div>
-                        <div class="contact__item">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-                                <circle cx="12" cy="10" r="3" />
-                            </svg>
-                            <p>Mérida, Yucatán, México</p>
+
+                        <!-- Botones de navegación -->
+                        <button class="about-carousel__nav about-carousel__nav--prev" id="aboutPrevBtn" aria-label="Foto anterior">
+                            ‹
+                        </button>
+                        <button class="about-carousel__nav about-carousel__nav--next" id="aboutNextBtn" aria-label="Siguiente foto">
+                            ›
+                        </button>
+
+                        <!-- Indicadores de puntos -->
+                        <div class="about-carousel__dots" id="aboutCarouselDots"></div>
+
+                        <!-- Etiqueta flotante de experiencia / instalaciones -->
+                        <div class="about-section__img-tag">
+                            <span class="about-section__img-tag-num">+4 AÑOS</span>
+                            <span class="about-section__img-tag-lbl">Instalaciones Propias</span>
                         </div>
                     </div>
                 </div>
-                <div class="contact__form-wrapper">
-                    <h3 class="contact__form-title">Contáctanos</h3>
-                    <form class="contact__form" id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Nombre Completo</label>
-                            <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+         SECCIÓN: ESTADÍSTICAS Y PRECISIÓN (CONTRASTE CLARO)
+    ════════════════════════════════════════ -->
+    <section class="stats-section" aria-label="Métricas de desempeño">
+        <div class="container">
+
+            <div class="stats-section__header reveal">
+                <h2 class="stats-section__title">
+                    DE LA IDEA A LA ESTRUCTURA: <span>PRECISIÓN, CALIDAD Y CONFIANZA.</span>
+                </h2>
+            </div>
+
+            <div class="stats-section__grid reveal reveal-delay-1" id="statsCounters">
+                
+                <div class="stat-card">
+                    <div class="stat-card__number" data-target="4" data-prefix="+">+4</div>
+                    <div class="stat-card__label">Años de experiencia</div>
+                    <div class="stat-card__desc">Trayectoria técnica y presencia en el sureste</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-card__number" data-target="1500" data-prefix="+">+1,500</div>
+                    <div class="stat-card__label">Toneladas fabricadas</div>
+                    <div class="stat-card__desc">Acero procesado en estructuras de alta resistencia</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-card__number" data-target="100" data-suffix="%">100%</div>
+                    <div class="stat-card__label">Calidad garantizada</div>
+                    <div class="stat-card__desc">Tolerancias estrictas y soldaduras certificadas</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-card__number" data-target="2">2</div>
+                    <div class="stat-card__label">Socios estratégicos</div>
+                    <div class="stat-card__desc">Alianzas comerciales con SIEM y Metallium</div>
+                </div>
+
+            </div>
+
+            <div class="stats-section__action reveal reveal-delay-2">
+                <a href="#proyectos" class="btn btn--primary">Ver Proyectos</a>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+         SECCIÓN: SERVICIOS — RESUMEN + FOTO (WIREFRAME)
+    ════════════════════════════════════════ -->
+    <section class="services-summary" id="servicios">
+        <div class="container">
+            <div class="services-summary__grid">
+
+                <!-- Izquierda: Resumen y lista de capacidades -->
+                <div class="services-summary__content reveal">
+                    <p class="section-tag">Capacidades Industriales</p>
+                    <h2 class="section-title">SERVICIOS <span>ESPECIALIZADOS</span></h2>
+                    
+                    <p class="services-summary__lead">
+                        Brindamos soluciones integrales para el sector manufacturero, metalmecánico 
+                        y de la construcción pesada con maquinaria computarizada de última generación.
+                    </p>
+                    <div class="services-summary__list" id="servicesList">
+                        <div class="service-row active" data-img="images/service/2.- DISEÑO ESTRUCTURAL.jpg">
+                            <span class="service-row__index">01</span>
+                            <div class="service-row__info">
+                                <h3 class="service-row__title">Diseño Estructural</h3>
+                                <p class="service-row__desc">Elaboración de planos de taller, cálculo, despieces de corte y modelos tridimensionales de ingeniería.</p>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Correo Electrónico</label>
-                            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+
+                        <div class="service-row" data-img="images/service/4.- HERRERÍA ESPECIALIZADA.jpg">
+                            <span class="service-row__index">02</span>
+                            <div class="service-row__info">
+                                <h3 class="service-row__title">Herrería Especializada</h3>
+                                <p class="service-row__desc">Soldadura de alta resistencia, herrería pesada, celosías, piezas artísticas y elementos a medida.</p>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="phone">Teléfono</label>
-                            <input type="tel" id="phone" name="phone" placeholder="999 123 4567">
+
+                        <div class="service-row" data-img="images/service/5.- CORTE CNC Y PLASMA.JPG">
+                            <span class="service-row__index">03</span>
+                            <div class="service-row__info">
+                                <h3 class="service-row__title">Corte CNC y Plasma</h3>
+                                <p class="service-row__desc">Corte térmico computarizado de alta definición en placas y láminas metálicas de diversos calibres.</p>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="message">Mensaje</label>
-                            <textarea id="message" name="message" rows="4" placeholder="¿En qué podemos ayudarte?"
-                                required></textarea>
+
+                        <div class="service-row" data-img="images/service/6.- SERVICIOS INDUSTRIALES Y ADECUACIONES.JPG">
+                            <span class="service-row__index">04</span>
+                            <div class="service-row__info">
+                                <h3 class="service-row__title">Servicios Industriales y Adecuaciones</h3>
+                                <p class="service-row__desc">Adecuaciones en planta, montaje de equipos, obra metalmecánica y soporte operativo integral.</p>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn--primary btn--full">Enviar Mensaje</button>
-                    </form>
+
+                        <div class="service-row" data-img="images/service/7.- REPARACIONES INDUSTRIALES.JPG">
+                            <span class="service-row__index">05</span>
+                            <div class="service-row__info">
+                                <h3 class="service-row__title">Reparaciones Industriales</h3>
+                                <p class="service-row__desc">Mantenimiento correctivo y preventivo de maquinaria y equipos en planta con respuesta inmediata.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="services-summary__cta">
+                        <a href="#contacto" class="btn btn--primary">Cotizar Servicio</a>
+                    </div>
+                </div>
+
+                <!-- Derecha: Foto de gran formato -->
+                <div class="services-summary__visual reveal reveal-delay-2">
+                    <div class="services-summary__image-wrapper">
+                        <img src="images/service/2.- DISEÑO ESTRUCTURAL.jpg" 
+                             alt="Diseño Estructural MQMX" 
+                             class="services-summary__photo" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+         SECCIÓN: PROYECTOS — TEXTO + CARRUSEL DE FOTOS (WIREFRAME)
+    ════════════════════════════════════════ -->
+    <section class="projects-showcase" id="proyectos">
+        <div class="container">
+            <div class="projects-showcase__grid">
+
+                <!-- Izquierda: Portafolio info -->
+                <div class="projects-showcase__info reveal">
+                    <p class="section-tag">Portafolio de Obra</p>
+                    <h2 class="section-title">NUESTROS <span>PROYECTOS</span></h2>
+                    
+                    <p class="projects-showcase__lead">
+                        Estructuras metálicas, habilitado de piezas de precisión, corte plasma CNC 
+                        y montajes industriales ejecutados en tiempo récord.
+                    </p>
+
+                    <p class="projects-showcase__text">
+                        Cada obra refleja nuestro compromiso con la rigidez estructural, la seguridad 
+                        operativa y el acabado estético de alto nivel.
+                    </p>
+
+                    <div class="projects-showcase__nav-controls">
+                        <button class="carousel-nav-btn" id="carouselPrevBtn" aria-label="Proyecto anterior">
+                            ‹
+                        </button>
+                        <span class="carousel-counter" id="carouselCounter">01 / 06</span>
+                        <button class="carousel-nav-btn" id="carouselNextBtn" aria-label="Proyecto siguiente">
+                            ›
+                        </button>
+                    </div>
+
+                    <a href="#contacto" class="btn btn--primary projects-showcase__cta">
+                        Solicitar Cotización
+                    </a>
+                </div>
+
+                <!-- Derecha: Carrusel interactivo -->
+                <div class="projects-showcase__slider-wrapper reveal reveal-delay-2">
+                    <div class="project-carousel" id="projectCarousel">
+                        <div class="project-carousel__track" id="carouselTrack">
+                            
+                            <div class="project-slide active" data-title="ISSSTE Chetumal" data-cat="Estructura Metálica">
+                                <img src="images/proyectos/ISSSTE CHETUMAL (1).JPG" alt="ISSSTE Chetumal" loading="lazy" />
+                                <div class="project-slide__overlay">
+                                    <span class="project-slide__cat">Estructura Metálica</span>
+                                    <h4 class="project-slide__title">ISSSTE Chetumal</h4>
+                                </div>
+                            </div>
+
+                            <div class="project-slide" data-title="La Tiendita — Playa del Carmen" data-cat="Fabricación Metálica">
+                                <img src="images/proyectos/LA TIENDITA - PLAYA DEL CARMEN .JPG" alt="La Tiendita Playa del Carmen" loading="lazy" />
+                                <div class="project-slide__overlay">
+                                    <span class="project-slide__cat">Fabricación Metálica</span>
+                                    <h4 class="project-slide__title">La Tiendita — Playa del Carmen</h4>
+                                </div>
+                            </div>
+
+                            <div class="project-slide" data-title="Pilgrims" data-cat="Fabricación y Montaje">
+                                <img src="images/proyectos/PILGRIMS .jpg" alt="Pilgrims" loading="lazy" />
+                                <div class="project-slide__overlay">
+                                    <span class="project-slide__cat">Fabricación y Montaje</span>
+                                    <h4 class="project-slide__title">Pilgrims</h4>
+                                </div>
+                            </div>
+
+                            <div class="project-slide" data-title="Dek Cholul" data-cat="Corte e Instalación">
+                                <img src="images/proyectos/dek cholul.jpg" alt="Dek Cholul" loading="lazy" />
+                                <div class="project-slide__overlay">
+                                    <span class="project-slide__cat">Corte e Instalación</span>
+                                    <h4 class="project-slide__title">Dek Cholul</h4>
+                                </div>
+                            </div>
+
+                            <div class="project-slide" data-title="Escalera de Bronchísimo" data-cat="Soldadura y Acabados">
+                                <img src="images/proyectos/escalera de bronchisimo.jpg" alt="Escalera de Bronchísimo" loading="lazy" />
+                                <div class="project-slide__overlay">
+                                    <span class="project-slide__cat">Soldadura y Acabados</span>
+                                    <h4 class="project-slide__title">Escalera de Bronchísimo</h4>
+                                </div>
+                            </div>
+
+                            <div class="project-slide" data-title="Escultura en Progreso" data-cat="Arte y Fabricación">
+                                <img src="images/proyectos/escultura en progreso.jpg" alt="Escultura en Progreso" loading="lazy" />
+                                <div class="project-slide__overlay">
+                                    <span class="project-slide__cat">Arte y Fabricación</span>
+                                    <h4 class="project-slide__title">Escultura en Progreso</h4>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Dots de navegación -->
+                        <div class="project-carousel__dots" id="carouselDots"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+         FRANJA: MQMX COMERCIALIZADORA DE MAQUINARIA INDUSTRIAL
+    ════════════════════════════════════════ -->
+    <section class="mqmx-banner" id="mqmx" aria-label="Banda corporativa MQMX">
+        <div class="mqmx-banner__bg-lines"></div>
+        <div class="container mqmx-banner__container">
+            <div class="mqmx-banner__content reveal">
+                <span class="mqmx-banner__tag">ALIANZA INDUSTRIAL DEL SURESTE</span>
+                <h2 class="mqmx-banner__title">
+                    MQMX COMERCIALIZADORA DE MAQUINARIA INDUSTRIAL
+                </h2>
+                <p class="mqmx-banner__subtitle">
+                    Suministro de equipos industriales, herramientas de corte computarizado y servicios especializados en Mérida, Yucatán.
+                </p>
+                <div class="mqmx-banner__divider">
+                    <span></span>
+                    <span class="mqmx-banner__divider-diamond"></span>
+                    <span></span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+
+    <!-- ═══════════════════════════════════════
+         SECCIÓN: COLABORADORES (S1EM · METALLIUM)
+    ════════════════════════════════════════ -->
+    <section class="collab-section" id="colaboradores">
+        <div class="container">
+
+            <div class="collab-section__header reveal">
+                <p class="section-tag">Alianzas Estratégicas</p>
+                <h2 class="section-title">NUESTROS <span>COLABORADORES</span></h2>
+                <p class="section-subtitle">Sinergia con líderes de la industria para entregar proyectos integrales de clase mundial.</p>
+            </div>
+
+            <div class="collab-section__grid">
+
+                <!-- S1EM -->
+                <article class="partner-card reveal">
+                    <div class="partner-card__header">
+                        <span class="partner-card__badge">Socio Estratégico</span>
+                        <h3 class="partner-card__name">S1EM</h3>
+                        <p class="partner-card__type">Soluciones Industriales y Electromecánicas</p>
+                    </div>
+                    <div class="partner-card__divider"></div>
+                    <ul class="partner-card__features">
+                        <li>Maquinaria pesada y equipos industriales</li>
+                        <li>Automatización de procesos y control</li>
+                        <li>Mantenimiento electromecánico preventivo</li>
+                        <li>Soporte técnico certificado en planta</li>
+                    </ul>
+                    <div class="partner-card__action">
+                        <a href="#contacto" class="btn btn--secondary btn--full">Cotizar con S1EM</a>
+                    </div>
+                </article>
+
+                <!-- METALLIUM -->
+                <article class="partner-card reveal reveal-delay-2">
+                    <div class="partner-card__header">
+                        <span class="partner-card__badge partner-card__badge--accent">Alianza Oficial</span>
+                        <h3 class="partner-card__name">METALLIUM</h3>
+                        <p class="partner-card__type">Soluciones Metálicas de Alta Precisión</p>
+                    </div>
+                    <div class="partner-card__divider"></div>
+                    <ul class="partner-card__features">
+                        <li>Fabricación y montaje de estructuras de acero</li>
+                        <li>Corte plasma CNC y conformado de metales</li>
+                        <li>Acabados y tratamientos superficiales anticorrosivos</li>
+                        <li>Piezas y ensamble arquitectónico a medida</li>
+                    </ul>
+                    <div class="partner-card__action">
+                        <a href="#contacto" class="btn btn--secondary btn--full">Cotizar con Metallium</a>
+                    </div>
+                </article>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+         SECCIÓN: CONTACTO — DATOS + FORMULARIO + GOOGLE MAPS
+    ════════════════════════════════════════ -->
+    <section class="contact-section" id="contacto">
+        <div class="container">
+            
+            <div class="contact-section__grid">
+
+                <!-- Info de contacto -->
+                <div class="contact-section__info reveal">
+                    <div class="contact-section__info-header">
+                        <p class="section-tag">Canales Directos</p>
+                        <h2 class="section-title">CONTACTO <span>DIRECTO</span></h2>
+                        <p class="contact-section__desc">
+                            Comunícate con nuestro equipo técnico para cotizaciones de obra, corte CNC y suministro de maquinaria.
+                        </p>
+                    </div>
+
+                    <div class="contact-card-list">
+                        
+                        <div class="contact-item-card">
+                            <div class="contact-item-card__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <path d="M22 6l-10 7L2 6"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <span class="contact-item-card__label">CORREO ELECTRÓNICO</span>
+                                <a href="mailto:proyectos@cmimaquimex.com" class="contact-item-card__value">proyectos@cmimaquimex.com</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-item-card">
+                            <div class="contact-item-card__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <span class="contact-item-card__label">NÚMEROS TELEFÓNICOS</span>
+                                <p class="contact-item-card__value">Tel: <strong>999 152 8424</strong></p>
+                                <p class="contact-item-card__value">WhatsApp: <strong>999 567 7293</strong></p>
+                            </div>
+                        </div>
+
+                        <div class="contact-item-card">
+                            <div class="contact-item-card__icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <span class="contact-item-card__label">UBICACIÓN Y COBERTURA</span>
+                                <p class="contact-item-card__value">Mérida, Yucatán, México</p>
+                                <span class="contact-item-card__sub">Servicio y entregas en todo el Sureste Mexicano</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Formulario -->
+                <div class="contact-section__form-wrapper reveal reveal-delay-1">
+                    <h3 class="contact-form-title">Envíanos un mensaje</h3>
+                    <p class="contact-form-subtitle">Recibe asesoría técnica y cotización formal en menos de 24 horas.</p>
+
+                    <form class="contact-form" id="contactForm" novalidate>
+                        <div class="form-field">
+                            <label for="name">Nombre completo *</label>
+                            <input type="text" id="name" name="name" placeholder="Ej. Ing. Roberto Mendoza" required autocomplete="name">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="email">Correo electrónico *</label>
+                            <input type="email" id="email" name="email" placeholder="correo@empresa.com" required autocomplete="email">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="phone">Teléfono / WhatsApp *</label>
+                            <input type="tel" id="phone" name="phone" placeholder="999 123 4567" required autocomplete="tel">
+                        </div>
+
+                        <div class="form-field">
+                            <label for="message">Detalles del proyecto o cotización *</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Describe los requerimientos de estructura, soldadura o maquinaria..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn--primary btn--full" id="submitBtn">
+                            Enviar solicitud
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+         FOOTER — AVISO DE PRIVACIDAD + BOTONWTS (WIREFRAME)
+    ════════════════════════════════════════ -->
     <footer class="footer">
         <div class="container">
-            <div class="footer__grid">
-                <div class="footer__about">
-                    <h4>Sobre Nosotros</h4>
-                    <p>MAQUIMEX es un proveedor líder de soluciones industriales, para mover y comparar de B2B
-                        industrial.</p>
+
+            <div class="footer__main-grid">
+
+                <div class="footer__brand-col">
+                    <img src="images/logo-metallium.png" alt="Metallium" class="footer__logo-img">
+                    <p class="footer__brand-text">
+                        MQMX Comercializadora de Maquinaria Industrial. 
+                        Soluciones estructurales de acero, soldadura de alta ingeniería y tecnología CNC en Mérida, Yucatán.
+                    </p>
                 </div>
-                <div class="footer__links">
-                    <h4>Enlaces Rápidos</h4>
-                    <ul>
-                        <li><a href="#inicio">Inicio</a></li>
+
+                <div class="footer__nav-col">
+                    <h4 class="footer__title">Navegación</h4>
+                    <ul class="footer__links">
+                        <li><a href="#inicio">Metallium (Inicio)</a></li>
+                        <li><a href="#nosotros">Quiénes Somos</a></li>
                         <li><a href="#servicios">Servicios</a></li>
-                        <li><a href="#maquinaria">Maquinaria</a></li>
                         <li><a href="#proyectos">Proyectos</a></li>
+                        <li><a href="#mqmx">Comercializadora</a></li>
                         <li><a href="#contacto">Contacto</a></li>
                     </ul>
                 </div>
-                <div class="footer__social">
-                    <h4>Redes Sociales</h4>
-                    <div class="social-links">
-                        <a href="#" class="social-link" aria-label="Instagram">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link" aria-label="Facebook">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link" aria-label="LinkedIn">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                            </svg>
-                        </a>
-                        <a href="#" class="social-link" aria-label="YouTube">
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                            </svg>
-                        </a>
-                    </div>
+
+                <div class="footer__contact-col">
+                    <h4 class="footer__title">Contacto Directo</h4>
+                    <p class="footer__contact-line">proyectos@cmimaquimex.com</p>
+                    <p class="footer__contact-line">Tel: 999 152 8424</p>
+                    <p class="footer__contact-line">WhatsApp: 999 567 7293</p>
+                    <p class="footer__contact-line">Mérida, Yucatán, México</p>
+                </div>
+
+            </div>
+
+            <!-- Barra inferior con Aviso de Privacidad -->
+            <div class="footer__bottom-bar">
+                <div class="footer__privacy-side" style="width: 100%; text-align: center;">
+                    <button class="footer__privacy-link" id="openPrivacyBtn">
+                        AVISO DE PRIVACIDAD
+                    </button>
+                    <span class="footer__copyright">
+                        © 2026 MQMX COMERCIALIZADORA DE MAQUINARIA INDUSTRIAL. TODOS LOS DERECHOS RESERVADOS.
+                    </span>
                 </div>
             </div>
-            <div class="footer__bottom">
-                <p>&copy; 2024 MAQUIMEX. Todos los derechos reservados.</p>
-            </div>
+
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/529995677293?text=Hola,%20me%20interesa%20información%20sobre%20sus%20productos%20y%20servicios"
-        class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-            <path
-                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+
+    <!-- ═══════════════════════════════════════
+         BOTÓN FLOTANTE DE WHATSAPP
+    ════════════════════════════════════════ -->
+    <a href="https://wa.me/529995677293?text=Hola,%20me%20gustar%C3%ADa%20cotizar%20un%20proyecto%20con%20MQMX"
+        class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
         </svg>
     </a>
 
-    <!-- Lightbox Modal -->
-    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Visor de proyectos">
-        <div class="lightbox__backdrop" id="lightboxBackdrop"></div>
-        <button class="lightbox__btn lightbox__close" id="lightboxClose" aria-label="Cerrar">×</button>
-        <div class="lightbox__content">
-            <button class="lightbox__btn" id="lightboxPrev" aria-label="Proyecto anterior">&#8249;</button>
-            <img class="lightbox__img" id="lightboxImg" src="" alt="" />
-            <button class="lightbox__btn" id="lightboxNext" aria-label="Siguiente proyecto">&#8250;</button>
-        </div>
-        <div class="lightbox__caption" id="lightboxCaption">
-            <p class="lightbox__caption-cat" id="lightboxCat"></p>
-            <p class="lightbox__caption-title" id="lightboxTitle"></p>
-            <p class="lightbox__counter" id="lightboxCounter"></p>
+
+
+
+
+    <!-- ═══════════════════════════════════════
+         MODAL: AVISO DE PRIVACIDAD
+    ════════════════════════════════════════ -->
+    <div class="privacy-modal" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+        <div class="privacy-modal__backdrop" id="privacyBackdrop"></div>
+        <div class="privacy-modal__container">
+            
+            <div class="privacy-modal__header">
+                <h3 class="privacy-modal__title" id="privacyTitle">Aviso de Privacidad Integral</h3>
+                <button class="privacy-modal__close" id="closePrivacyBtn" aria-label="Cerrar modal">×</button>
+            </div>
+
+            <div class="privacy-modal__body">
+                <p class="privacy-modal__date">Última actualización: Agosto de 2026</p>
+
+                <h4>1. Identidad y Domicilio del Responsable</h4>
+                <p>
+                    <strong>MQMX COMERCIALIZADORA DE MAQUINARIA INDUSTRIAL</strong> (en adelante "MQMX"), con domicilio operativo en la ciudad de Mérida, Yucatán, México, es el responsable del tratamiento y protección de sus datos personales, en estricto apego a la <em>Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP)</em>.
+                </p>
+
+                <h4>2. Datos Personales Recabados</h4>
+                <p>
+                    Para llevar a cabo las finalidades descritas en el presente aviso, recabamos los siguientes datos personales mediante nuestros formularios y canales directos:
+                </p>
+                <ul>
+                    <li>Nombre completo de la persona o contacto empresarial.</li>
+                    <li>Correo electrónico corporativo o personal.</li>
+                    <li>Número telefónico y/o WhatsApp de contacto.</li>
+                    <li>Información técnica y especificaciones de cotización de proyectos.</li>
+                </ul>
+
+                <h4>3. Finalidades del Tratamiento de Datos</h4>
+                <p>Sus datos personales serán utilizados para las siguientes finalidades primarias y necesarias:</p>
+                <ul>
+                    <li>Elaboración y envío de cotizaciones de estructuras metálicas, corte CNC y maquinaria.</li>
+                    <li>Comunicación directa técnica sobre proyectos en desarrollo o montaje.</li>
+                    <li>Gestión administrativa, facturación y entrega de productos o servicios.</li>
+                    <li>Atención y seguimiento a solicitudes enviadas a través de nuestro portal web.</li>
+                </ul>
+
+                <h4>4. Derechos ARCO</h4>
+                <p>
+                    Usted tiene derecho a conocer qué datos personales tenemos de usted, para qué los utilizamos y las condiciones del uso que les damos (Acceso). Asimismo, es su derecho solicitar la corrección de su información (Rectificación), que la eliminemos de nuestros registros (Cancelación), oponerse al uso de sus datos para fines específicos (Oposición).
+                </p>
+                <p>
+                    Para el ejercicio de cualquiera de los derechos ARCO, usted podrá enviar su solicitud al correo electrónico: <strong>proyectos@cmimaquimex.com</strong>.
+                </p>
+
+                <h4>5. Medidas de Seguridad</h4>
+                <p>
+                    MQMX ha adoptado las medidas de seguridad técnicas, físicas y administrativas necesarias para procurar la confidencialidad de sus datos y evitar su daño, pérdida, alteración, destrucción o el uso, acceso o tratamiento no autorizado.
+                </p>
+
+                <h4>6. Modificaciones al Aviso de Privacidad</h4>
+                <p>
+                    El presente aviso de privacidad puede sufrir modificaciones, cambios o actualizaciones derivadas de nuevos requerimientos legales o de nuestras prácticas de servicio. Cualquier cambio será publicado a través de este mismo portal.
+                </p>
+            </div>
+
+            <div class="privacy-modal__footer">
+                <button class="btn btn--primary" id="confirmPrivacyBtn">Entendido</button>
+            </div>
+
         </div>
     </div>
 
+
+    <!-- ═══════════════════════════════════════
+         MODAL: VISOR DE VIDEO INSIGNIA
+    ════════════════════════════════════════ -->
+    <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Reproductor de video insignia">
+        <div class="video-modal__backdrop" id="videoBackdrop"></div>
+        <div class="video-modal__box">
+            <button class="video-modal__close" id="closeVideoBtn" aria-label="Cerrar video">×</button>
+            <div class="video-modal__wrapper">
+                <!-- Marco de video interactivo / placeholder hasta que el cliente provea el archivo definitivo -->
+                <div class="video-placeholder-frame">
+                    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1400&q=85&fit=crop" alt="Metallium by MQMX Video" class="video-placeholder-frame__bg">
+                    <div class="video-placeholder-frame__content">
+                        <div class="video-pulse-play">▶</div>
+                        <h3>METALLIUM BY MQMX</h3>
+                        <p>Video Insignia Oficial — En proceso de carga en alta resolución</p>
+                        <span class="video-badge-status">DISPONIBLE PRÓXIMAMENTE EN SERVIDOR</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
     <script src="js/main.js"></script>
 </body>
 
